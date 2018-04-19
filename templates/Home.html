@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}首页{% endblock %}
+
+{% block  head %}
+    <link rel="stylesheet" href="{% static 'css/firstpage.css' %}">
+    <script src="{% static 'JS/jquery-3.2.1.js' %}"></script>
+    <style>
+        .zan{
+            position: relative;
+            cursor:pointer;
+        }
+        .zan span{
+            position: absolute;
+            font-weight: bold;
+        }
+    </style>
+{% endblock %}
+
+{% block main %}
+    <div class="slider">
+
+	<div class="slider-img">
+		<ul class="slider-img-ul">
+			<li><img src="{% static 'images/slider-5.jpg'%}"></li>
+			<li><img src="{% static 'images/slider-1.jpg'%}"></li>
+			<li><img src="{% static 'images/slider-2.jpg'%}"></li>
+			<li><img src="{% static 'images/slider-3.jpg'%}"></li>
+			<li><img src="{% static 'images/slider-4.jpg'%}"></li>
+			<li><img src="{% static 'images/slider-5.jpg'%}"></li>
+			<li><img src="{% static 'images/slider-1.jpg'%}"></li>
+		</ul>
+	</div>
+
+</div>
+<script type="text/javascript" src="{% static 'JS/xSlider.js'%}"></script>
+<div class="text1">
+	<div class="head1">
+		<li><img src="{% static 'images/small.png'%}"></li>
+		<li><a>相关新闻</a></li>
+	</div>
+	<div class="list">
+        <ul>
+        {{ newslist | safe }}
+        </ul>
+    </div>
+</div>
+
+<div class="text2">
+	<div class="head2">
+		<li><img src="{% static 'images/small.png'%}"></li>
+		<li><a>论坛</a></li>
+	</div>
+	<div>
+        <ul>
+            {{ eductionlist | safe}}
+        </ul>
+    </div>
+</div>
+
+<div class="text3">
+	<div class="head1">
+		<li><img src="{% static 'images/small.png'%}"></li>
+		<li><a>热点文章</a></li>
+	</div>
+	<div>
+        <ul>
+            {{ coffe_bloglist | safe }}
+        </ul>
+    </div>
+</div>
+
+<div class="text4">
+	<div class="head2">
+		<li><img src="{% static 'images/small.png'%}"></li>
+		<li><a>论坛消息</a></li>
+	</div>
+	<div>
+        <ul>
+            <li style="color: red">消息1</li>
+            <hr>
+        </ul>
+    </div>
+</div>
+{% endblock %}

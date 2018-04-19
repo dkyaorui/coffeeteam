@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+ 热点动态
+{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/Hots.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+{% endblock %}
+
+{% block main %}
+<div class="BOX">
+<div class="w_container">
+<div class="container">
+<div class="row w_main_row">
+<div class="col-lg-8 col-md-offset-2 col-md-20">
+<div class="panel panel-default cont">
+	<div class="panel-heading">
+	  <h3 class="panel-title">热点动态</h3>
+	  </div>
+<div class="panel-body">
+  <!--文章列表开始-->
+  <div class="contentList">
+      {% for cls in cls_list %}
+      <div class="panel panel-default">
+			<div class="panel-body">
+				<div class="contentLeft">
+					<h4><a class="title" href="/blog/article_detial/?id={{ cls.id | safe }}">{{ cls.title }}</a></h4>
+					<p>
+					{% for ts in cls.tags.all %}
+						<span class="label label-default">{{ts.tname}}</span>
+					{% endfor %}
+					</p>
+					<p class="overView">{{ cls.summary }}</p>
+					<p>
+                        <span class="count"><i class="glyphicon glyphicon-user"></i>
+                        	{% if request.user == cls.user %}
+                        	<a href="{% url 'user_index' %}">{{ cls.user.username }}</a>
+			                    {% else %}
+			                    <a href="/blog/otherIndex/?id={{cls.user.id|safe}}">{{ cls.user.username }}</a>
+			                    {% endif %}
+                        </span>
+                        <span class="count"><i class="glyphicon glyphicon-eye-open"></i>点赞:{{ cls.favor_count }}</span>
+                        <span class="count"><i class="glyphicon glyphicon-comment"></i>评论:{{ cls.comment_count }}</span>
+                        <span class="count"><i class="glyphicon glyphicon-time"></i>{{ cls.ctime }}</span></p>
+				</div>
+				<div class="contentImage">
+					<div class="row">
+						<a href="#" class="thumbnail w_thumbnail">
+							<img src="\{{ cls.user.user_img}}" alt="...">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+      {% endfor %}
+
+
+
+{#<div class="page_btn">#}
+{#	<a class="first">首页</a>#}
+{#	<a class="pre">上一页</a>#}
+{#	<span class="num">#}
+{#		<a class="current">1</a>#}
+{#		<a>2</a>#}
+{#		<a>3</a>#}
+{#		<a>…</a>#}
+{#	</span>#}
+{#	<a class="next">下一页</a>#}
+{#	<a class="last">尾页</a>#}
+{#</div>#}
+      <div class="page_btn">
+        {{ str_pager|safe }}
+      </div>
+	</div>
+	<!--文章列表结束-->
+	</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

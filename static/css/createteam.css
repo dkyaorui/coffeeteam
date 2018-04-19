@@ -1,0 +1,31 @@
+.editBox{
+	position:relative;
+	height:600px;
+	width:1235px;
+	padding-top:40px;
+	background-color:rgba(248,243,239,0.6);
+	border-bottom-left-radius:10px;
+	border-bottom-right-radius:10px;
+	box-shadow:2px 2px 2px 2px #888888;
+}
+.articleTitle{
+	margin:20px 200px 20px 200px;
+}
+#article_title{
+	height:50px;
+	font-size:1.5em;
+}
+.articleContent{
+	height:600px;
+	width:1235px;
+}
+#article_submit{
+	margin:10px 0 20px 20px;
+}
+.articleTitle select{
+	width:750px;
+	height:30px;
+}
+.warn{
+	color:red;
+}

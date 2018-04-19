@@ -1,0 +1,54 @@
+.BOX{
+	margin:0 auto;
+	text-align:center;
+	width: 1235px;
+	height:auto;
+}
+.foot{
+	font-size:1.2em;
+	color:#915a00;
+	margin:50px 0 0 0;
+	padding:0 auto;
+	position:relative;
+	text-align: center;
+}
+.foot a{
+	color:#915a00;
+}
+.foot li{
+	list-style:none;
+}
+.foot p{
+	margin: 0;
+	padding:0;
+}
+.move{
+    height: 4px;
+    width: 160px;
+    border-top: 4px solid #EB8E55;/*只需要将上边显示出来*/
+    position: absolute;
+    left: 0px;
+    top: 52px;
+    transition: left .2s ease-in-out 0s;/*包含四个过度属性：执行变换属性、执行时间、速率、延迟*/
+    -webkit-transition: left .2s ease-in-out 0s;/*chrome和safari*/
+    -moz-transition: left .2s ease-in-out 0s;/*firefox*/
+    -o-transition: left .2s ease-in-out 0s;/*opera*/
+}
+li:nth-child(1):hover~ .move{    /*li元素的父元素的第一个子元素，当鼠标停留其上时，move元素的left属性改变*/
+    left: 0px;
+}
+li:nth-child(2):hover~ .move{
+    left: 160px;
+}
+li:nth-child(3):hover~ .move{
+    left: 320px;
+}
+li:nth-child(4):hover~ .move{
+    left: 480px;
+}
+li:nth-child(5):hover~ .move{
+    left: 640px;
+}
+li:nth-child(6):hover~ .move{
+    left: 800px;
+}

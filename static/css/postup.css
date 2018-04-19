@@ -1,0 +1,132 @@
+body{
+	background-color:rgb(248,243,239);
+}
+.BOX{
+	margin:0 auto;
+	text-align:center;
+	width: 1235px;
+	height:auto;
+	border: 1px solid red;
+}
+.title_bar{
+	position:absolute;
+	left:25%;
+	top:14%;
+	height: 12%;
+	width: 50%;
+	border:2px solid rgb(231,216,209);
+    border-radius:20px;
+	background-color: rgb(231,216,209);
+}
+.article_title_label{
+	position:absolute;
+	top:30%;
+	left:5%;
+	font-size:2em;
+	color:rgb(152,134,124);
+}
+.article_title{
+	position:absolute;
+	left:20%;
+	top:30%;
+	height:40%;
+	width:70%;
+	font-size:2em;
+	overflow:hidden;
+	resize:none;
+	border:none;
+	outline:none;
+	background-color:rgb(231,216,209);
+	color:rgb(152,134,124);
+}
+	
+.type_bar{
+	position:absolute;
+	left:25%;
+	top:31%;
+	height:8%;
+	width:50%;
+	background-color: rgb(231,216,209);
+}
+.type_label{
+	position:absolute;
+	font-size:2em;
+	color:rgb(152,134,124);
+	left:3%;
+	height:100%;
+	width:10%;
+	padding-top:1.5%;
+}
+.type_select{
+	position:absolute;
+	left:15%;
+	height:50%;
+	width:30%;
+	border:2px solid white;
+    border-radius:10px;
+	margin-top:2.2%;
+	font-size:1em;
+	color:rgb(152,134,124);
+	outline:none;
+}
+.type_select option{
+	outline:none;
+	font-size:1em;
+	color:rgb(152,134,124);
+}
+.summary_bar{
+	position:absolute;
+	left:25%;
+	top:40%;
+	height:48%;
+	width:50%;
+	background-color: rgb(231,216,209);
+}
+.summary_label{
+	position:relative;
+	font-size:1.5em;
+	color:rgb(152,134,124);
+	left:3%;
+	top:5%;
+	height:100%;
+}
+.summary_text{
+	position:absolute;
+	top:15%;
+	left:3%;
+	height:80%;
+	width:94%;
+	overflow:auto;
+	resize:none;
+	border:none;
+	outline:none;
+	background-color:rgb(231,216,209);
+	color:rgb(152,134,124);
+}
+#btn_add{
+	position:absolute;
+	left:85%;
+	top:30%;
+	background-color:gray;
+	border:none;
+	outline:none;
+	
+}
+.tab_bar label{
+	position:absolute;
+	top:30%;
+	height:40%;
+	font-size:1.8em;
+	color:white;
+	background-color:gray;
+	outline:none;
+	border-radius: 3px;
+}
+#btn_next{
+	position:absolute;
+	top:90%;
+	left:48%;
+	background-color:gray;
+	border:none;
+	outline:none;
+}

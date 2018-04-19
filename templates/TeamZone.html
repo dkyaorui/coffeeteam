@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+{{this_team.name}}的团队基地
+{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/im.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/teamzone.css' %}"/>
+<script src="{% static 'JS/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'JS/jquery-3.2.1.js' %}"></script>
+<script src="{% static 'JS/bootstrap.min.js' %}"></script>
+<script>
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+</script>
+{% endblock %}
+
+{% block main %}
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+        <h2 class="panel-title"><span class="glyphicon glyphicon-tower"/>&nbsp;{{this_team.name}}</h2>
+      </div>
+      <div class="panel-body team_m">
+        <p><span class="glyphicon glyphicon-king "/>&nbsp;队长：{{this_team.captain.username}}</p>
+        <p class="team_info"><span class="glyphicon glyphicon-blackboard"/>&nbsp;简介：{{this_team.detail}}</p>
+        <p class="team_info"><span class="glyphicon glyphicon-pawn"/>&nbsp;人数：{{this_team.nownum}}/{{this_team.maxnum}}</p>
+        <p class="team_info"><span class="glyphicon glyphicon-tent"/>&nbsp;成员：
+        {% for tm in this_team.teammate.all%}
+        {% if tm == request.user %}
+	 	<a href="{% url 'user_index'%}" class="link">{{tm.username}}</a>
+	 	{% else %}
+	 	<a href="/blog/otherIndex/?id={{tm.id|safe}}" class="link">{{tm.username}}</a>
+	 	{% endif %}
+        {% endfor %}
+        <p>
+      </div>
+    </div>
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h2 class="panel-title"><span class="glyphicon glyphicon-exclamation-sign"/>&nbsp;团队公告</h2>
+        </div>
+        <div class="panel-body">
+        <p>“{{this_team.captain_talk}}”</p>
+        <p class="talk_name">——{{this_team.captain.username}}</p>
+        
+        </div>
+    </div>
+    {% if request.user == this_team.captain %}
+
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                <span class="glyphicon glyphicon-cog"/>&nbsp;团队事务
+        </button>
+            
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">事务</h4>
+                        </div>
+                        <form method="post" action="{% url 'teamzone' %}">
+                        <input hidden="true" name="team_id" value="{{this_team.id}}">
+                        <div class="modal-body">     
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon2">修改团队公告</span>
+                                    <textarea name="new_talk" class="form-control profileText" placeholder="" rows="8" style="resize:none;">{{this_team.captain_talk}}</textarea>
+                                </div>
+                                <div class="input-group">     
+                                    <span class="input-group-addon" id="sizing-addon2">扩充团队人数</span>
+                                    <select class="form-control" name="new_num">
+                                        <script>
+                                            for(var i={{this_team.maxnum}};i<=100;i++){
+                                            document.write("<option value='"+i+"'>"+i+"</option>");
+                                            }
+                                        </script>   
+                                    <select>
+                                </div>
+                                <div class="input-group">
+                                 <span class="input-group-addon" id="sizing-addon2">移交队长职务</span>
+                                 <select class="form-control" name="new_cap">
+                                        {% for tm in this_team.teammate.all %}
+                                        <option value="{{ tm.id }}">{{ tm.username }}</option>
+                                        {% endfor %}
+                                </select>
+                                </div>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal" onclick="this.form.submit()">确认修改</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>    
+        {% endif %}
+      <div class="panel panel-success dialog_board">
+      <div class="panel-heading">
+        <h2 class="panel-title"><span class="glyphicon glyphicon-comment"/>&nbsp;团队留言墙</h2>
+      </div>
+      <div class="panel-body dialog_panel">
+      {% for dl in td %}
+            {% if dl.user == request.user %} 
+            <div class="panel panel-info dialog_left">
+            <div class="myPhoto_left" name="myPhoto"><img id="my_avatar" class="photoImg" src="\{{ dl.user.user_img | safe }}"></div>
+              <div class="panel-body">
+                <p class="dialog_text"><b>{{dl.user.username}}：{{ dl.content }}</b></p>
+              </div>
+            </div>
+            {% elif dl.user != request.user %} 
+            <div class="panel panel-success dialog_right">
+            <div class="myPhoto_right" name="myPhoto"><img id="my_avatar" class="photoImg" src="\{{ dl.user.user_img | safe }}"></div>
+              <div class="panel-body"><b>{{dl.user.username}}：{{ dl.content }}</b> </div>
+            </div>
+            {% endif %}
+      {% endfor %}
+      </div>
+      <form method="post" action="{% url 'dialogue' %}">
+      <div class="panel-footer">
+        <input hidden="true" name="team_id" value="{{this_team.id}}"/>
+        <input type="text" name="dialogue_content" class="form-control dialog_content" placeholder="Dialogue (Less then 200 words)" aria-describedby="sizing-addon2" id="article_title" onkeydown="checknum_title()" onkeyup="checknum_title()" autocomplete="off">
+        <script>
+            function checknum_title(){
+                var MAX = 200;
+                var text = document.getElementById("article_title");
+                var len = text.value.length;
+                if(len>MAX)
+                {
+                    text.value = text.value.substring(0,MAX);
+                    return;
+                }
+            }
+            checknum_title();
+        </script>
+        <button type="button" class="btn btn-success"  onclick="this.form.submit()">发送</button>
+       </div>
+      </form>
+      </div>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block title %}
+   编辑文章
+{% endblock %}
+{% load staticfiles %}
+{% block head %}
+<html xmlns:jsp="http://www.w3.org/2001/XInclude">
+<head>
+<link rel="stylesheet" href="{% static 'css/firstpage.css' %}" />
+<link rel="stylesheet" href="{% static 'css/edit.css' %}" />
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+<link rel="stylesheet" href="{% static 'css/tags.css' %}" />
+<script src="{% static 'JS/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'JS/bootstrap.min.js' %}"></script>
+<script src="{% static 'JS/jquery.tags.min.js' %}"></script>
+	<script type="text/javascript">
+	$(function(){
+		$('#id').tags('提问');
+		$('#value').text($('#id').val());
+		setInterval(function () {
+			$('#value').text($('#id').val());
+		}, 500);
+		});
+	</script>
+<link rel="stylesheet" href="{% static 'kindeditor-master/kindeditor-master/themes/default/default.css' %}" />
+<script charset="utf-8" src="{% static 'kindeditor-master/kindeditor-master/kindeditor-all-min.js' %}"></script>
+<script charset="utf-8" src="{% static 'kindeditor-master/kindeditor-master/lang/zh-CN.js' %}"></script>
+<jsp:include page="top.jsp" flush="true"/>
+<script language="JavaScript" type="text/javascript">
+var editor;
+KindEditor.ready(function(K) {
+    editor = K.create('textarea[name="content"]', {
+    resizeType : 1,
+    allowPreviewEmoticons : false,
+    allowImageRemote:false,
+    uploadJson:'/uploadimg/',
+    cssData: ".ke-content img {max-width: 500p" +
+    "x;height:auto;}",
+    items : [
+    'undo','redo','|','formatblock','fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','strikethrough','removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist','insertunorderedlist','insertorderedlist','insertunorderedlist', '|', 'emoticons', 'image', 'link','table','hr','preview'],
+    afterCreate : function() {
+            this.sync();
+    },
+    afterBlur:function(){
+            this.sync();
+    }
+    });
+
+});
+</script>
+{% endblock %}
+{% block main %}
+	<div class="editBox">
+		<form method="post" action="{% url 'edit' %}" enctype="application/x-www-form-urlencoded">
+			<div class="input-group articleTitle">
+				<span class="input-group-addon" id="sizing-addon2">标题</span>
+				<input type="text" name="article_article" class="form-control" placeholder="Title (Less then 10 words)" aria-describedby="sizing-addon2" id="article_title" onkeydown="checknum_title()" onkeyup="checknum_title()">
+				<script>
+					function checknum_title(){
+						var MAX = 10;
+						var text = document.getElementById("article_title");
+						var len = text.value.length;
+						if(len>MAX)
+						{
+							text.value = text.value.substring(0,MAX);
+							return;
+						}
+					}
+					checknum_title();
+				</script>
+			</div>
+			<div class="input-group articleTitle">
+				<span class="input-group-addon" id="sizing-addon2">简述</span>
+				<input type="text" name="article_summary" class="form-control" placeholder="Summary (Less then 40 words)" aria-describedby="sizing-addon2" id="article_summary" onkeydown="checknum_summary()" onkeyup="checknum_summary()">
+				<script>
+					function checknum_summary(){
+						var MAX = 40;
+						var text = document.getElementById("article_summary");
+						var len = text.value.length;
+						if(len>MAX)
+						{
+							text.value = text.value.substring(0,MAX);
+							return;
+						}
+					}
+					checknum_summary();
+				</script>
+			</div>
+			<div class="input-group articleType">
+			<span class="input-group-addon" id="sizing-addon2">分类</span>
+				<select name="new_type">
+				  <option value ="3">咖啡馆</option>
+				</select>
+			</div>
+			<input type="text" class="form-control" id="id" name="new_tags"/>
+			<p><span id="value" hidden="true"></span>您可以随意添加标签，但最终只会保留三个~</p>
+			<textarea id="addeditor_id" name="content" class="articleContent"></textarea>
+			<textarea rows="" cols="" name="schtmlnr" id="schtmlnr" style="display:none;"></textarea>
+			<button type="button" class="btn btn-info btn-lg" id="article_submit" onclick="this.form.submit()">提交</button>
+		</form>
+	</div>
+{% endblock %}

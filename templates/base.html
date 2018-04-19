@@ -1,0 +1,79 @@
+{% load staticfiles %}
+<!doctype html>
+<html  xmlns:jsp="http://www.w3.org/2001/XInclude">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>coffee-{% block title %}{% endblock %}</title>
+<script src="{% static 'JS/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'JS/bootstrap.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+<link rel="stylesheet" href="{% static 'css/image.css'%}">
+{% block head %}{% endblock %}
+</head>
+
+<body>
+<script src="{% static 'JS/background.js'%}"></script>
+<div class="toolbar toolbar-skin-coffee ">
+	<div class="container">
+		<div class="pull-left logo clearfix">
+			<a class="icon" ></a>
+			<a class="img blog-icon"></a>
+		</div>
+        {% if request.user.is_authenticated %}
+            <div class="pull-right login-wrap unlogin">
+                <ul class="btns">
+                <li>
+                    <a href="{% url 'user_index' %}">{{ request.user.username }}</a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}">注销</a>
+                </li>
+                </ul>
+		    </div>
+        {% else %}
+            <div class="pull-right login-wrap unlogin">
+                <ul class="btns">
+                <li>
+                    <a href="{% url 'to_login' %}">登录</a>
+                </li>
+                <li>
+                    <a href="{% url 'to_register' %}">注册</a>
+                </li>
+                </ul>
+		    </div>
+        {% endif %}
+            <div class="postup">
+                <li>
+                    <a href = "{% url 'edit' %}"><img src = "{%  static 'images/pencil.png' %}"></a>
+                    <a href = "{% url 'edit' %}">发帖</a>
+                </li>
+            </div>
+
+	</div>
+</div>
+
+<div class="BOX">
+<div class="guide">
+	<ul>
+		<li class=".aplate_linked"><a href="{% url 'index' %}">首页</a></li>
+        <li><a href="{% url 'news' %}">热点动态</a></li>
+        <li><a href="{% url 'learn' %}">创新教育</a></li>
+        <li><a href="{% url 'activities' %}">团队招募</a></li>
+        <li><a href="{% url 'cafe' %}">咖啡馆</a></li>
+        <li><a href="{% url 'about_us' %}">关于我们</a></li>
+        <li class="move"> </li>
+        <form method="get" action="{% url 'search' %}" role="search" id="box">
+        	<input type="search" id="search" name="search" size="30" placeholder="搜索" />
+        	<input type="image" src="{% static 'images/search.png'%}" alt="Submit" />
+        </form>
+    </ul>
+</div>
+{% block main %}{% endblock %}
+<div class="foot">
+	<li><a href="#6">帮助</a></li>
+	<li><a href="{% url 'about_us' %}">关于我们</a></li>
+	<p>&copy; Copyright Co-Fee</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,371 @@
+﻿
+.head{
+	width:858px;
+	height:40px;
+	background-color:rgba(88,88,88,0.5);
+	float:left;
+}
+
+.head li{
+	margin:11px 0px 0px 12px;
+	float:left;
+	list-style: none;
+}
+.head a{
+	color:black;
+	text-decoration: none;
+}
+.articlecontainer{
+	width: 860px;
+	height: auto;
+	background-color:rgba(248,243,239,0.6);
+	margin:50px auto -30px auto;
+	position:relative;
+	border: 1px solid #585858;
+	border-radius:3px;
+	box-shadow:2px 2px 5px #000;
+}
+.a_title{
+	margin-top:50px;
+	font-size: 20px;
+	font-family:"宋体";
+	font-weight: bold;
+}
+.a_split_line{
+	width: 820px;
+	height: 1px;
+	background-color: #585858;
+	margin:0 auto 0 auto;
+
+}
+.box_p{
+	width: 800px;
+	height: 25px;
+	border: 1px dashed red;
+	margin: 15px auto 15px auto;
+}
+.box_p span{
+	margin:5px 5px 0px 30px;
+}
+.box_p a{
+	color:black;
+	text-decoration: none;
+}
+.box_p .link{
+	color:#915a00;
+	text-decoration:underline;
+}
+.about_content{
+	padding:1px 35px;
+	margin-bottom: 35px;
+}
+.about_content p{
+	font-size:15px;
+	text-align:left;
+	text-indent:2em;
+}
+.path_container{
+	float:left;
+	margin-left:188px;
+}
+.path_container a{
+	color:#915a00;
+}
+.keywords{
+	position: relative;
+	margin:0 0 0 -575px;
+}
+.keywords span{
+	margin:auto 1px;
+}
+.label{
+	margin:auto 2px;
+}
+
+.praise{
+    width:40px;
+    height:40px;
+    margin:-40px 0 20px 750px;
+    cursor: pointer;
+    font-size: 12px;
+    position: relative;
+}
+#praise{
+    display:block;
+    width:40px;
+    height:40px;
+    margin:0 auto;
+}
+#praise-txt{
+    height:25px;
+    line-height:5px;
+    display: block;
+	margin:0 5px 0 0;
+}
+.praise img{
+    width:30px;
+    height:30px;
+    display:block;
+    margin: 0 auto;
+}
+.praise img.animation{
+    animation: myfirst 0.5s;
+    -moz-animation: myfirst 0.5s;	/* Firefox */
+    -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
+    -o-animation: myfirst 0.5s;	/* Opera */
+}
+#add-num{
+    display:none;
+}
+#add-num .add-animation{
+    color: #000;
+    position:absolute;
+    top:-15px;
+    left: 10px;
+    font-size: 15px;
+    opacity: 0;
+    filter: Alpha(opacity=0);
+    -moz-opacity:0;
+    animation: mypraise 0.5s ;
+    -moz-animation: mypraise 0.5s ;	/* Firefox */
+    -webkit-animation: mypraise 0.5s ;	/* Safari 和 Chrome */
+    -o-animation: mypraise 0.5s ;	/* Opera */
+    font-style:normal;
+}
+.praise .hover , #add-num .add-animation.hover , #praise-txt.hover{
+    color: red;
+}
+
+
+.star{
+    width:40px;
+    height:40px;
+    margin:-58px 0 20px 680px;
+    cursor: pointer;
+    font-size: 12px;
+    position: relative;
+}
+#star{
+    display:block;
+    width:40px;
+    height:40px;
+    margin:0 auto;
+}
+.star img{
+    width:30px;
+    height:30px;
+    display:block;
+    margin: 0 auto;
+}
+.star img.animation{
+    animation: myfirst 0.5s;
+    -moz-animation: myfirst 0.5s;	/* Firefox */
+    -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
+    -o-animation: myfirst 0.5s;	/* Opera */
+}
+.star .hover , .add-animation.hover{
+    color: red;
+}
+
+
+/*点赞图标放大动画开始*/
+@keyframes myfirst
+{
+    0%{
+        width:30px;
+        height:30px;
+    }
+    50%{
+        width:40px;
+        height:40px;
+    }
+    100% {
+        width:30px;
+        height:30px;
+    }
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+    0%{
+        width:30px;
+        height:30px;
+    }
+    50%{
+        width:40px;
+        height:40px;
+    }
+    100% {
+        width:30px;
+        height:30px;
+    }
+}
+
+@-webkit-keyframes myfirst /* Safari 和 Chrome */
+{
+    0%{
+        width:30px;
+        height:30px;
+    }
+    50%{
+        width:40px;
+        height:40px;
+    }
+    100% {
+        width:30px;
+        height:30px;
+    }
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+    0%{
+        width:30px;
+        height:30px;
+    }
+    50%{
+        width:40px;
+        height:40px;
+    }
+    100% {
+        width:30px;
+        height:30px;
+    }
+}
+/*点赞图标放大动画结束*/
+/*点赞数量加减动画开始*/
+@keyframes mypraise
+{
+    0%{
+        top:-15px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+    25%{
+        top:-20px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    50%{
+        top:-25px;
+        opacity: 1;
+        filter: Alpha(opacity=100);
+        -moz-opacity:1;
+    }
+    75%{
+        top:-30px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    100% {
+        top:-35px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+}
+
+@-moz-keyframes mypraise /* Firefox */
+{
+    0%{
+        top:-15px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+    25%{
+        top:-20px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    50%{
+        top:-25px;
+        opacity: 1;
+        filter: Alpha(opacity=100);
+        -moz-opacity:1;
+    }
+    75%{
+        top:-30px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    100% {
+        top:-35px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+}
+
+@-webkit-keyframes mypraise /* Safari 和 Chrome */
+{
+    0%{
+        top:-15px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+    25%{
+        top:-20px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    50%{
+        top:-25px;
+        opacity: 1;
+        filter: Alpha(opacity=100);
+        -moz-opacity:1;
+    }
+    75%{
+        top:-30px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    100% {
+        top:-35px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+}
+
+@-o-keyframes mypraise /* Opera */
+{
+    0%{
+        top:-15px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+    25%{
+        top:-20px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    50%{
+        top:-25px;
+        opacity: 1;
+        filter: Alpha(opacity=100);
+        -moz-opacity:1;
+    }
+    75%{
+        top:-30px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    100% {
+        top:-35px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+}

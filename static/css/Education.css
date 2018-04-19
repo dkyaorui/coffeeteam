@@ -1,0 +1,168 @@
+.page_btn a{
+	background-color:white;
+	font-size:15px;
+	border-radius: 1.5px;
+	cursor: pointer;
+	border:1px solid #dbdbdb;
+	padding:10px 17px;;
+	color:black;
+}
+.page_btn a:hover{
+	border:1px solid grey;
+	background-color:#777777;
+	text-decoration: none;
+	color:white;
+}
+.num a{
+	width:150px;
+	height:150px;
+	color:dimgray;
+}
+.num .current{
+	border:1px solid grey;
+	background-color: #777777;
+	text-decoration: none;
+	color:white;
+}
+.BOX{
+	margin:0 auto;
+	text-align:center;
+	width: 1235px;
+	height:auto;
+}
+.foot{
+	font-size:1.2em;
+	color:#915a00;
+	margin:0 auto;
+	padding:0 auto;
+	position:relative;
+	text-align: center;
+}
+.foot a{
+	color:#915a00;
+}
+.foot li{
+	list-style:none;
+}
+.foot p{
+	margin: 0;
+	padding:0;
+}
+.move{  
+    height: 4px;  
+    width: 160px;  
+    border-top: 4px solid #EB8E55;/*只需要将上边显示出来*/  
+    position: absolute;  
+    left: 320px;  
+    top: 52px;  
+    transition: left .2s ease-in-out 0s;/*包含四个过度属性：执行变换属性、执行时间、速率、延迟*/  
+    -webkit-transition: left .2s ease-in-out 0s;/*chrome和safari*/  
+    -moz-transition: left .2s ease-in-out 0s;/*firefox*/  
+    -o-transition: left .2s ease-in-out 0s;/*opera*/  
+}  
+li:nth-child(1):hover~ .move{    /*li元素的父元素的第一个子元素，当鼠标停留其上时，move元素的left属性改变*/ 
+    left: 0px;  
+}  
+li:nth-child(2):hover~ .move{  
+    left: 160px;  
+}  
+li:nth-child(3):hover~ .move{  
+    left: 320px;  
+}  
+li:nth-child(4):hover~ .move{  
+    left: 480px;  
+}  
+li:nth-child(5):hover~ .move{  
+    left: 640px;  
+}  
+li:nth-child(6):hover~ .move{  
+    left: 800px;  
+}  
+
+.w_container{
+	min-height: 100%;
+	padding: 55px 0px 40px 0px;
+}
+.w_main_row{
+	/*padding-left: 15px;
+	padding-right: 15px;*/
+}
+.w_main_left{
+	margin: 20px 0px;
+	/*padding: 0px 10px 0px 0px;*/
+
+}
+.w_main_right{
+	margin: 20px 0px;
+	/*padding: 0px 0px 0px 10px;*/
+
+}
+
+.contentList .title{
+	font-size: 16px;
+	color: #333;
+	font-weight:600;
+}
+.contentList a.title:hover{
+	color: #337AB7;
+}
+.contentList .label{
+	margin-right: 10px;
+}
+
+.contentList .overView{
+	color: #555;
+	line-height:1.5;
+	color: #5f5f5f;
+}
+.count{
+	margin-right: 10px;
+	font-size:12px;
+}
+.count>i{
+	margin-right: 5px;
+}
+.count>a{
+	color: #5f5f5f;
+}
+.contentleft{
+	text-align: left;
+	width:75%;
+	float: left;
+}
+.contentList .contentImage{
+	float: right;
+}
+.contentList .contentImage .row{
+	margin: 0px;
+}
+.contentList .contentImage .row .thumbnail{
+	margin: 0px;
+	padding: 0px;
+}
+.contentList .contentImage img{
+    width: 160px;
+    height: 160px;
+}
+
+.labelList{
+	padding: 0px;
+}
+.labelList .label{
+	float: left;
+	margin: 5px;
+	font-size: 14px;
+}
+
+.contentList .panel-body{
+	box-shadow: 0px 8px 18px rgba(0,0,0,0.06);
+	transition: all .2s ease-out;
+}
+.contentList .panel-body:hover{
+	box-shadow: 0px 8px 18px rgba(0,0,0,0.15);
+	transition: all .2s ease-out;
+}
+.cont{
+	position: relative;
+	text-align: center;
+}

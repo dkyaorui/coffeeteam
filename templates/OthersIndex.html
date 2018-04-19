@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+   别人的个人中心
+{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/im.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/MyIndex.css' %}">
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+{% endblock %}
+{% block main %}
+<!-- 导航区 -->  
+<ul class="nav nav-tabs" role="tablist">  
+  <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">Ta的主页</a></li>  
+  <li role="presentation"><a href="#post" role="tab" data-toggle="tab">Ta的帖子</a></li>  
+</ul>  
+  
+<!-- 面板区 -->  
+<div class="tab-content">  
+  <div role="tabpanel" class="tab-pane active" id="home">
+	<div class="myIndexBox">
+		<div class="myPhoto" name="myPhoto"><a><img class = "photoImg" src="\{{ user.user_img | safe}}"/></a></div>
+		<div class="myInformation">
+			<ul>
+				<li>
+					<a><label>昵称：</label><span name="myNickname">{{ user.username }}</span></a>
+				</li>
+				<li id="Profile">
+					<a><label>简介：</label><span name="myProfile">{{ user.profile }}</span></a>
+				</li>
+				<li>
+					<a><label>性别：</label><span name="mySex">{{ user.sex }}</span></a>
+				</li>
+				<li>
+					<a><label>生日：</label><span name="myBirthday">{{ user.date_of_birth }}</span></a>
+				</li>
+				<li>
+					<a><label>职业：</label><span name="myOccupation">{{ user.occupation }}</span></a>
+				</li>
+				<li id="Edit">
+					{% if is_follow == 1 %}
+					<a href="/blog/changeFocus/?id={{user.id}}&data=0"><label>已关注&nbsp;</label></a>
+					{% else %}
+					<a href="/blog/changeFocus/?id={{user.id}}&data=1"><label>关注&nbsp;</label></a>
+					{% endif %}
+				</li>
+			</ul>
+		</div>
+	</div>
+  </div>  
+  <div role="tabpanel" class="tab-pane" id="post">
+	<div class="myIndexBox">
+		<div class="myPost">
+			<ul>
+				{% for n in news %}
+				<li class="postItem">
+					<a href="/blog/article_detial/?id={{ n.id | safe }}" style="text-decoration:none">
+						<h4 class="messageContent"><span class="glyphicon glyphicon-paperclip"/>&nbsp;{{ n.title}}</h4>
+						<p class="messageContent">{{ n.summary }}<span class="messageTime"><span class="glyphicon glyphicon-time"/>&nbsp;{{ n.ctime}}</span></p>
+					</a>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+  </div>  
+ </div>
+{% endblock %}
+

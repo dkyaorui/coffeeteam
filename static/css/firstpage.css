@@ -1,0 +1,169 @@
+.BOX{
+	margin:0 auto;
+	text-align:center;
+	width: 1235px;
+	height:1220px;
+}
+
+.list{
+	width:700px;
+	list-style-image:url('../images/箭头.png');
+	margin:10px 0 3px 25px;
+}
+.news a{
+	color:dimgray;
+	text-decoration:none;
+}
+
+.news{
+	text-align: left;
+	width:560px;
+	margin:0px 0 0px 5px;
+}
+.list_small{
+    width:200px;
+	list-style-image:url('../images/箭头.png');
+	margin:8px 0 4.5px 35px;
+}
+.news_small a{
+	color:dimgray;
+	text-decoration:none;
+}
+.news_small{
+	text-align: left;
+	width:170px;
+	margin:0 0 0 5px;
+}
+.time{
+	width:122px;
+	color:dimgray;
+	margin:-22px 0px 0 530px;
+}
+.text1{
+	margin:0;
+	padding:0;
+	width:750px;
+	height:500px;
+	border:1px solid black;
+	border-radius:5px;
+	font-size:1.1em;
+	color:#fff;
+	position:relative;
+	float:left;
+	left:9.5%;
+	top:1%;
+}
+.head1{
+	width:750px;
+	height:40px;
+	background:#915a00;
+}
+.head1 img{
+	margin:-6px 0px 0px -1px;
+	float:left;
+}
+.head1 li{
+	margin:10px 0px 0px 8px;
+	float:left;
+}
+.text2{
+	margin:0;
+	padding:0;
+	width:240px;
+	height:500px;
+	border:1px solid black;
+	border-radius:5px;
+	font-size:1.1em;
+	color:#fff;
+	position:relative;
+	float:left;
+	left:10%;
+	top:1%;
+}
+.text3{
+	margin:0;
+	padding:0;
+	width:750px;
+	height:500px;
+	border:1px solid black;
+	border-radius:5px;
+	font-size:1.1em;
+	color:#fff;
+	float:left;
+	position:relative;
+	left:9.5%;
+	top:1%;
+}
+.head2{
+	width:240px;
+	height:40px;
+	background:#915a00;
+}
+.head2 img{
+	margin:-6px 0px 0px -1px;
+}
+.head2 li{
+	margin:10px 0px 0px 8px;
+	float:left;
+}
+.text4{
+	width:240px;
+	height:500px;
+	border:1px solid black;
+	border-radius:5px;
+	font-size:1.1em;
+	color:#fff;
+	position:relative;
+	float:left;
+	left:10%;
+	top:1%;
+}
+.foot{
+	font-size:1.2em;
+	color:#915a00;
+	margin:0 auto;
+	padding:0 auto;
+	position:relative;
+	top:85%;
+	right:40%;
+}
+.foot a{
+	color:#915a00;
+}
+.foot li{
+	list-style:none;
+}
+.foot p{
+	margin: 0;
+	padding:0;
+}
+.move{  
+    height: 4px;  
+    width: 160px;  
+    border-top: 4px solid #EB8E55;/*只需要将上边显示出来*/  
+    position: absolute;  
+    left: 0px;  
+    top: 52px;  
+    transition: left .2s ease-in-out 0s;/*包含四个过度属性：执行变换属性、执行时间、速率、延迟*/  
+    -webkit-transition: left .2s ease-in-out 0s;/*chrome和safari*/  
+    -moz-transition: left .2s ease-in-out 0s;/*firefox*/  
+    -o-transition: left .2s ease-in-out 0s;/*opera*/  
+}  
+li:nth-child(1):hover~ .move{    /*li元素的父元素的第一个子元素，当鼠标停留其上时，move元素的left属性改变*/ 
+    left: 0px;  
+}  
+li:nth-child(2):hover~ .move{  
+    left: 160px;  
+}  
+li:nth-child(3):hover~ .move{  
+    left: 320px;  
+}  
+li:nth-child(4):hover~ .move{  
+    left: 480px;  
+}  
+li:nth-child(5):hover~ .move{  
+    left: 640px;  
+}  
+li:nth-child(6):hover~ .move{  
+    left: 800px;  
+}  

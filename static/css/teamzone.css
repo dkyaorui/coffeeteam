@@ -1,0 +1,61 @@
+.team_m{
+    text-align:left;
+}
+.talk_name{
+    text-align:right;
+    padding-right:80px;
+}
+.dialog_board{
+    margin-top:40px;
+}
+.dialog_panel{
+    height:400px;
+    overflow:auto;
+}
+.dialog_left{
+    width:600px;
+}
+.dialog_right{
+    width:600px;
+    margin-left:580px;
+}
+.myPhoto_left{
+	position:relative;
+	height:50px;
+	width:50px;
+    margin-top:10px;
+    margin-left:5px;
+    float:left;
+	background-color:white;
+	border:2px rgb(140,95,0) solid;
+	border-radius:100%;
+	box-shadow:1px 1px 1px 1px #888888;
+}
+.myPhoto_right{
+	position:relative;
+	height:50px;
+	width:50px;
+    margin-top:10px;
+    margin-right:5px;
+    float:right;
+	background-color:white;
+	border:2px rgb(140,95,0) solid;
+	border-radius:100%;
+	box-shadow:1px 1px 1px 1px #888888;
+}
+.photoImg{
+	position:relative;
+	height:50px;
+	width:50px;
+	border-radius:100%;
+}
+.dialog_text{
+    position:relative;
+    margin-left:80px;
+    text-align:left;
+}
+.dialog_content{
+    height:80px;
+    margin-bottom:10px;
+}
+    

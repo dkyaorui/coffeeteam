@@ -1,0 +1,169 @@
+
+.myIndexBox{
+	position:relative;
+	min-height:616px;
+	height:auto;
+	width:1235px;
+	background-color:rgba(248,243,239,0.6);
+	padding-top:50px;
+	padding-bottom:50px;
+	border-bottom-left-radius:10px;
+	border-bottom-right-radius:10px;
+	box-shadow:5px 5px 5px 5px #888888;
+	margin-bottom:10px;
+}
+
+/*Home*/
+.myPhoto{
+	position:relative;
+	height:180px;
+	width:180px;
+	left:70px;
+	background-color:white;
+	border:2px rgb(140,95,0) solid;
+	border-radius:100%;
+	box-shadow:2px 2px 2px 2px #888888;
+}
+.photoImg{
+	position:relative;
+	height:180px;
+	width:180px;
+	border-radius:100%;
+}
+.myInformation{
+	position:relative;
+	width:800px;
+	float:right;
+	margin-top:-160px;
+	margin-right:100px;
+	margin-bottom:0;
+}
+.myInformation ul li{
+	padding:20px 0 10px 10px;
+	border: 2px rgb(248,243,239) solid;
+	margin-top:5px;
+	text-align:left;
+	background:white;
+	box-shadow: 5px 5px 5px 5px #888888;
+}
+.myInformation ul li#Profile{
+	height:200px;
+	
+}
+.myInformation ul li#Edit{
+	margin-top:15px;
+	height:50px;
+	float:right;
+	background-color:rgb(248,243,239);
+	box-shadow:none;
+	font-size:1.5em;
+}
+/*message*/
+.myMessage{
+	position:relative;
+	float:left;
+	width:1001px;
+	margin-left:117px;
+	border-radius:10px;
+}
+.messageLabel{
+	padding:10px 0 10px 10px;
+	border: 2px rgb(248,243,239) solid;
+	text-align:left;
+	margin-top:5px;
+	background:white;
+	box-shadow: 1px 1px 1px 1px #888888;
+}
+.messageItem{
+	padding:10px 0 0 10px;
+	border: 2px rgb(248,243,239) solid;
+	text-align:left;
+	margin-top:5px;
+	background:white;
+	box-shadow: 1px 1px 1px 1px #888888;
+}
+.sysmessageItem{
+	padding:10px 0 0 10px;
+	border: 2px rgb(248,243,239) solid;
+	text-align:left;
+	margin-top:5px;
+	background: rgb(255,235,205);
+	box-shadow: 1px 1px 1px 1px #888888;
+}
+.messageTime{
+	float:right;
+	padding-right:30px;
+}
+.moreMessage{
+	position:relative;
+	margin-top:5px;
+	font-size:1.5em;
+	float:right;
+}
+/*post*/
+.myPost{
+	position:relative;
+	height:auto;
+	width:1001px;
+	margin-left:117px;
+	border-radius:10px;
+	overflow:auto;
+}
+.postItem{
+	padding:10px 0 5px 10px;
+	border: 2px rgb(248,243,239) solid;
+	text-align:left;
+	margin-top:10px;
+	background:white;
+	box-shadow: 1px 1px 1px #888888;
+}
+/*focus*/
+.focusItem{
+	width:220px;
+	height:150px;
+	margin:0 15px 50px 15px;
+	float:left;
+	box-shadow: 1px 1px 1px 1px #888888;
+}
+.photoPanel{
+	width:100px;
+	float:left;
+}
+.photoBody{
+	width:70px;
+	height:70px;
+	margin:40px 15px 40px 15px;
+	border:1px gray solid;
+	border-radius:100%;
+}
+.splitLine{
+	position:relative;
+	width:1px;
+	height:130px;
+	margin:10px 10px 10px 0;
+	background-color:black;
+	float:left;
+}
+.InformationPanel{
+	position:relative;
+	float:left;
+	width:100px;
+	height:130px;
+	margin:10px 0 10px 0;
+}
+.focusNickname {
+	text-align:left;
+}
+.focusNickname a{
+	color:black;
+	text-decoration:none;
+}
+.focusNickname a:hover{
+	color:red;
+}
+.focusSex{
+	text-align:left;
+}
+.focusOccupation{
+	text-align:left;
+}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+   搜索结果
+{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/im.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/MyIndex.css' %}">
+<script src="{% static 'JS/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'JS/bootstrap.min.js' %}"></script>
+
+{% endblock %}
+{% block main %}
+	<!-- 导航区 -->
+		<ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#post" role="tab" data-toggle="tab">帖子</a></li>
+		  <li role="presentation"><a href="#user" role="tab" data-toggle="tab">用户</a></li>
+		</ul>
+	<!-- 面板区 -->
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="post">
+				<div class="myIndexBox">
+                <div class="myPost">
+				<ul>	<!--帖子的列表放这里-->
+                    {% for n in news %}
+                    <li class="postItem">
+
+					<a href="/blog/article_detial/?id={{ n.id | safe }}">
+						<h4 class="messageContent"><span class="glyphicon glyphicon-bookmark"/>&nbsp;{{ n.title }}</h4>
+						<p class="messageContent">{{ n.summary }}</p>
+						<a href="/blog/otherIndex/?id={{n.user.id|safe}}">
+							<p class="messageFrom"><span class="glyphicon glyphicon-user"/>&nbsp;{{ n.user.username}}&nbsp;&nbsp;<span class="glyphicon glyphicon-time"/>
+							<span class="messageTime">&nbsp;{{ n.ctime }}</span></p>
+						</a>
+					</a>
+                        </li>
+                        {% endfor %}
+				</ul>
+                </div>
+				</div>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="user">
+				<div class="myIndexBox">
+					<div class="myPost"><!--用户的列表放这里-->
+                    {% for f in users %}
+                    <div class="panel panel-default focusItem">
+				<div class="photoPanel">
+					<a href="/blog/otherIndex/?id={{f.id|safe}}">
+						<div class="photoBody">
+							<img src="\{{ f.user_img }}" style="width:100%;height:auto;border-radius:100%;">
+						</div>
+					</a>
+				</div>
+				<div class="splitLine"></div>
+				<div class="InformationPanel">
+						<p class="focusNickname"><a href="/blog/otherIndex/?id={{f.id|safe}}"><b>{{ f.username }}</b></a></p>
+						<p class="focusSex"><span>{{ f.sex }}</span>&nbsp;&nbsp;&nbsp;<span>20岁</span></p>
+						<p class="focusOccupation">{{ f.occupation }}</p>
+				</div>
+			</div>
+                    {% endfor %}
+				</div>
+                </div>
+			</div>
+	    </div>
+{% endblock %}

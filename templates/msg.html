@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block head %}
+     <script>
+    function send_msg(self){
+        var inputtext = self.value;
+        var xmlhttp;
+        if(window.XMLHttpRequest){
+            xmlhttp = new XMLHttpRequest();
+        }else{
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.open("POST","/blog/send_msg/",true);
+        xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        xmlhttp.send("text="+inputtext);
+        xmlhttp.onreadystatechange = function () {
+            if(xmlhttp.readyState== 4 && xmlhttp.status == 200 ){
+                var data = xmlhttp.responseText;
+                if(data=="1"){
+                    document.getElementById("succsee").innerHTML = "success";
+                }
+                alert(data);
+            }
+        };
+    }
+    </script>
+{% endblock %}
+{% block main %}
+    <form action="" method="post" enctype="multipart/form-data">
+        <label>
+            <input type="text" name="inputtext" onblur="send_msg(this)">
+
+        </label>
+        <input  type="button" value="submit"><span id="succsee"></span>
+    </form>
+{% endblock %}

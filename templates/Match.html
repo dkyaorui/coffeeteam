@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+团队招募
+{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{%static 'css/Match.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<script src="{% static 'JS/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'JS/jquery-3.2.1.js' %}"></script>
+<script src="{% static 'JS/bootstrap.min.js' %}"></script>
+<script>
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+</script>
+{% endblock %}
+
+{% block main %}
+<div class="slider">
+
+	<div class="slider-img">
+		<ul class="slider-img-ul">
+			<li><img src="{% static 'images/match-2.jpg'%}"></li>
+			<li><img src="{% static 'images/match-1.jpg'%}"></li>
+			<li><img src="{% static 'images/match-2.jpg'%}"></li>
+			<li><img src="{% static 'images/match-1.jpg'%}"></li>
+		</ul>
+	</div>
+
+</div>
+<div class="box">
+		<div class="panel-group" id="accordion">
+		<p>
+		<a href="{%url 'createteam'%}"><button class="btn btn-warning">创建团队</button></a>
+		</p>
+		{% for t in teams %}
+		
+		<div class="panel panel-warning">
+			<div class="panel-heading">
+				<h5>
+					<a class="team_a" data-toggle="collapse" data-parent="#accordion" href="#{{t.id}}">
+						<p class="team_head"><span class="glyphicon glyphicon-tower"/>&nbsp;Team:&nbsp;{{t.name}}&nbsp;<span class="glyphicon glyphicon-king "/>&nbsp;Captain:&nbsp;{{t.captain.username}}</p>
+					</a>
+				</h5>
+			</div>
+			<div id="{{t.id}}" class="panel-collapse collapse">
+				<div class="panel-body">
+				<p class="team_info"><span class="glyphicon glyphicon-blackboard"/>&nbsp;{{t.detail}}</p>
+				<p class="team_info"><span class="glyphicon glyphicon-pawn"/>&nbsp;人数：{{t.nownum}}/{{t.maxnum}}</p>
+				<p class="team_info"><span class="glyphicon glyphicon-tent"/>
+				成员：{% for tm in t.teammate.all %}{{tm.username}}&nbsp;{% endfor %}
+				</p>
+				{% if request.user in t.teammate.all %}
+				<button class="cant_join btn btn-danger">已加入</button>
+				{% elif t.nownum == t.maxnum %}
+				<button class="cant_join btn btn-danger">成员已满</button>
+				{% else %}
+				<form method="post" active="{% url 'activities' %}">
+					<input type="text" name="team_id" value="{{t.id}}"hidden></input>
+					<a><button class="join_team btn btn-danger">加入</button></a>
+				</form>
+				{% endif %}
+				</div>
+			</div>
+		</div>
+		
+		{% endfor %}
+		</div>
+</div>
+<script type="text/javascript" src="{% static 'JS/xSlider.js'%}"></script>
+{% endblock %}

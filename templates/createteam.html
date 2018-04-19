@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}
+   创建团队
+{% endblock %}
+{% load staticfiles %}
+{% block head %}
+<html>
+<head>
+<link rel="stylesheet" href="{% static 'css/im.css' %}" />
+<link rel="stylesheet" href="{% static 'css/createteam.css' %}" />
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+<script src="{% static 'JS/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'JS/bootstrap.min.js' %}"></script>
+{% endblock %}
+{% block main %}
+	<div class="editBox">
+		<form method="post" action="{% url 'createteam' %}">
+					<h4>创建团队</h4>
+			<div class="input-group articleTitle">
+				<span class="input-group-addon" id="sizing-addon2">团队名称</span>
+				<input type="text" name="team_name" class="form-control" placeholder="TeamName (Less then 15 words)" aria-describedby="sizing-addon2" id="team_name" onkeydown="checknum_title()" onkeyup="checknum_title()">
+				<script>
+					function checknum_title(){
+						var MAX = 15;
+						var text = document.getElementById("team_name");
+						var len = text.value.length;
+						if(len>MAX)
+						{
+							text.value = text.value.substring(0,MAX);
+							return;
+						}
+					}
+					checknum_title();
+				</script>
+			</div>
+			<div class="input-group articleTitle">
+				<span class="input-group-addon" id="sizing-addon2">团队介绍</span>
+				<input type="text" name="team_detail" class="form-control" placeholder="Detail (Less then 40 words)" aria-describedby="sizing-addon2" id="team_detail" onkeydown="checknum_summary()" onkeyup="checknum_summary()">
+				<script>
+					function checknum_summary(){
+						var MAX = 40;
+						var text = document.getElementById("team_detail");
+						var len = text.value.length;
+						if(len>MAX)
+						{
+							text.value = text.value.substring(0,MAX);
+							return;
+						}
+					}
+					checknum_summary();
+				</script>
+			</div>
+			<div class="input-group articleTitle">
+			<span class="input-group-addon" id="sizing-addon2">团队人数</span>
+			<select name="team_num">
+				<script>
+					for(var i=1;i<=100;i++){
+					document.write("<option value='"+i+"'>"+i+"</option>");
+					}
+				</script>   
+			</select>
+			</div>
+			<p class="warn">{{msg}}</p>
+			<button type="button" class="btn btn-info btn-lg" id="team_submit" onclick="this.form.submit()">创建</button>
+		</form>
+	</div>
+{% endblock %}

@@ -1,0 +1,134 @@
+* {
+	margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(249,241,238);
+}
+
+.BOX{
+	margin:0 auto;
+	text-align:center;
+	width: 1235px;
+	height:1220px;
+}
+
+div.via {
+    position: relative;
+	float:left;
+    left: 12%;
+    top: 3%;
+    background-color: #FFEFDB;
+    height: 253px;
+    width: 253px;
+	border:1px solid #915a00;
+}
+
+div.navigation {
+    position: relative;
+	float:left;
+    left: 12%;
+    top: -31.6%;
+    background-color: #FFEFDB;
+    height: 420px;
+    width: 253px;
+	border:1px solid #915a00;
+}
+
+div.main {
+    position: relative;
+	float:left;
+    top: 3%;
+    left: 14%;
+    background-color: #FFEFDB;
+    height: 758px;
+    width: 800px;
+	border:1px solid #915a00;
+}
+
+ul {
+    position: relative;
+    top: 20px;
+    left: 0;
+}
+ul li {
+    display: table;
+    list-style-type: none;
+ }
+ul li a {
+    display: table-cell;
+    width: 253px;
+    height: 66px;
+    color: rgb(191,149,120);
+    text-decoration: none;
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+
+li.now {
+    background-color: rgb(245,245,245);
+    border-left: solid;
+    border-left-width: 5px;
+    border-left-color: darkgrey;
+}
+li.else:link {
+    background-color: white;
+}
+
+li.else:hover {
+    background-color: rgb(245,245,245);
+}
+
+li.else:active {
+    background-color: rgb(128, 128, 128);
+}
+
+div#index {
+    position: relative;
+    top: 3%;
+    color: rgb(191,149,120);
+}
+
+#index h1{
+	margin:0 auto;
+	font-size:2.5em;
+}
+hr#index_hr {
+	
+    background-color: rgb(191,149,120);
+    height: 1.5px;
+}
+
+p.index_txt {
+    position: relative;
+    margin:50px auto 0 auto;
+    font-size: 1.6em;
+	text-align:center;
+}
+
+#preview{
+	position: absolute;
+	width:200px;
+	height:200px;
+	border:1px solid #000;
+	overflow:hidden;
+	top:5%;
+	left:10%;
+}
+
+#Preview{
+	position: absolute;
+	width:140px;
+	height:30px;
+	top:85%;
+	left:10%;
+}
+
+#Submit{
+	position: absolute;
+	width:140px;
+	height:30px;
+	top:105%;
+	left:25%;
+}

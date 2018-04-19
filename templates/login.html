@@ -1,0 +1,103 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sign-Up/Login Form</title>
+  <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+
+<body>
+  <div class="form">
+      
+      <ul class="tab-group">
+        <li class="tab active"><a href="#login">登录</a></li>
+        <li class="tab"><a href="#signup">注册</a></li>
+      </ul>
+      
+      <div class="tab-content">
+         <div id="login">   
+          <h1>欢迎回来！</h1>
+          
+          <form action="{% url 'login' %}" method="post">
+          {% csrf_token %}
+            <div class="field-wrap">
+            <label>
+              邮箱<span class="req"></span>
+            </label>
+            <input type="email" required autocomplete="off" name="email"/>
+          </div>
+          
+          <div class="field-wrap">
+            <label>
+              密码<span class="req"></span>
+            </label>
+            <input type="password" required autocomplete="off" name="password"/>
+          </div>
+          <p class="adminlogin"><a href='/admin'>管理员登录</a></p>
+          <p class="forgot"><a href="{% url 'forget' %}">忘记密码？</a></p>
+          
+          <button class="button button-block">登录</button><span style="color: red">{{ msg }}</span>
+          <div class="other">
+          	<li>第三方登录</li>
+          	<a href="#QQ"><img src="{% static 'images/QQ.png' %}" alt="QQ" height="40px" weight="40px" /></a>
+          	<a href="#WeChat"><img src="{% static 'images/WeChat.png' %}" alt="WeChat" height="40px" weight="40px" /></a>
+          	<a href="#Sina"><img src="{% static 'images/Sina.png' %}" alt="Sina" height="40px" weight="40px" url="#Sina"/></a>
+		  </div>
+          
+          </form>
+
+        </div>
+        <div id="signup">   
+          <h1>免费注册！</h1>
+          
+          <form action="{% url 'register' %}" method="post">
+          {% csrf_token %}
+          <div class="field-wrap">
+            <label>
+              邮箱<span class="req">*</span>
+            </label>
+            <input type="email" required autocomplete="off" name="email"/>
+          </div>
+          
+          <div class="field-wrap">
+            <label>
+              用户名<span class="req">*</span>
+            </label>
+            <input type="text" required autocomplete="off" name="username" />
+          </div>
+          
+          <div class="field-wrap">
+            <label>
+              密码<span class="req">*</span>
+            </label>
+            <input type="password" required autocomplete="off" name="password1" />
+          </div>
+          
+          <div class="field-wrap">
+            <label>
+              确认密码<span class="req">*</span>
+            </label>
+            <input type="password" required autocomplete="off" name="password2"/>
+          </div>
+          <div class="checkdiv">
+          	<input type="checkbox" name="boxset" id="check" value="check" class="check" required autocomplete="off"/>
+          	<li>
+          		我已仔细阅读<a href="https:www.baidu.com">XXX协议</a>
+          	</li>
+          </div>
+          <button type="submit" class="button button-block">注册</button>
+          <span style="color: red">{{ msg }}</span>
+          </form>
+
+        </div>
+        
+      </div><!-- tab-content -->
+      
+</div> <!-- /form -->
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>  
+<script  src="{% static 'JS/register.js' %}"></script>
+</body>
+
+</html>

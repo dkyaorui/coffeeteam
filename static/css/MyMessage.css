@@ -1,0 +1,46 @@
+.myIndexBox{
+	position:relative;
+	height:616px;
+	width:1235px;
+	background-color:rgba(248,243,239,0.6);
+	border-bottom-left-radius:10px;
+	border-bottom-right-radius:10px;
+	box-shadow:5px 5px 5px 5px #888888;
+	margin-bottom:10px;
+}
+.myMessage{
+	position:relative;
+	float:left;
+	width:1001px;
+	margin-left:117px;
+	border-radius:10px;
+}
+.messageLabel{
+	padding:10px 0 10px 10px;
+	border: 2px rgb(248,243,239) solid;
+	text-align:left;
+	margin-top:5px;
+	background:white;
+	box-shadow: 1px 1px 1px 1px #888888;
+}
+.messageItem{
+	padding:10px 0 0 10px;
+	border: 2px rgb(248,243,239) solid;
+	text-align:left;
+	margin-top:5px;
+	background:white;
+	box-shadow: 1px 1px 1px 1px #888888;
+}
+.messageTime{
+	float:right;
+	padding-right:30px;
+}
+.moreMessage{
+	position:relative;
+	margin-top:5px;
+	font-size:1.5em;
+	float:right;
+}
+button a{
+	color:white;
+}

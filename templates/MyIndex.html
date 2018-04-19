@@ -1,0 +1,279 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block title %} 个人中心 {% endblock %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/im.css' %}" />
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/MyIndex.css' %}">
+<link rel="stylesheet" href="{%static 'css/Match.css' %}">
+<script src="{% static 'JS/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'JS/jquery-3.2.1.js' %}"></script>
+<script src="{% static 'JS/bootstrap.min.js' %}"></script>
+<script>
+    function chat() {
+        var toUsername = document.getElementById("toUsername").value;
+        var uid = document.getElementById("uid").value;
+        var charDetial = document.getElementById("charDetial").value;
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.open("POST", "/chat/dealChat/", true);
+        xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xmlhttp.send("toUsername=" + toUsername + "&uid=" + uid + "&chatDetial=" + charDetial + "&chatType=sendChat");
+        xmlhttp.onreadystatechange = function() {
+            var re = xmlhttp.responseText;
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                alert(re);
+            }
+        }
+    }
+
+    setTimeout(getChat(), 1000);
+</script>
+<script>
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+</script>
+{% endblock %} {% block main %}
+
+<!-- 导航区 -->
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">个人主页</a></li>
+    <li role="presentation"><a href="#message" role="tab" data-toggle="tab">我的消息&nbsp;<span class="badge" name="new_message">{{ countAll }}</span></a></li>
+    <li role="presentation"><a href="#post" role="tab" data-toggle="tab">我的帖子</a></li>
+    <li role="presentation"><a href="#favorite" role="tab" data-toggle="tab">我的收藏</a></li>
+    <li role="presentation"><a href="#focus" role="tab" data-toggle="tab">我的关注</a></li>
+    <li role="presentation"><a href="#myfans" role="tab" data-toggle="tab">关注我的</a></li>
+	 <li role="presentation"><a href="#myteam" role="tab" data-toggle="tab">我的团队</a></li>
+</ul>
+
+<!-- 面板区 -->
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+        <div class="myIndexBox">
+            <div class="myPhoto" name="myPhoto"><img id="my_avatar" class="photoImg" src="\{{ request.user.user_img | safe }}"></div>
+            <div class="myInformation">
+                <ul>
+                    <li>
+                        <a><label>昵称：</label><span name="myNickname">{{ request.user.username }}</span></a>
+                    </li>
+                    <li id="Profile">
+                        <a><label>简介：</label><span name="myProfile">{{ request.user.profile }}</span></a>
+                    </li>
+                    <li>
+                        <a><label>性别：</label><span name="mySex">{{ request.user.sex }}</span></a>
+                    </li>
+                    <li>
+                        <a><label>生日：</label><span name="myBirthday">{{ request.user.date_of_birth }}</span></a>
+                    </li>
+                    <li>
+                        <a><label>职业：</label><span name="myOccupation">{{ request.user.occupation }}</span></a>
+                    </li>
+                    <li id="Edit">
+                        <a href="{% url 'edit_my_info' %}"><label>编辑您的信息&nbsp;</label><span class="glyphicon glyphicon-edit"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="myEdit"><img class="glyphicon glyphicon-edit" /></div>
+        </div>
+
+    </div>
+    <div role="tabpanel" class="tab-pane" id="message">
+        <div class="myIndexBox">
+        <div class="myMessage">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    <span class="glyphicon glyphicon-pencil"/>&nbsp;写私信
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">写私信</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form id="chatForm">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2">写给</span>
+                                        <input type="text" id="toUsername" class="form-control" placeholder="" aria-describedby="sizing-addon2" list="friend" autocomplete="off">
+                                        <datalist id="friend">
+                                            {% for f in myfollowers %}
+                                            <option value="{{ f.username }}">{{ f.username }}</option>
+                                            {% endfor %}
+                                        </datalist>
+                                    </div>
+                                    <input type="hidden" id="uid" value="{{request.user.id}}">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2">内容</span>
+                                        <textarea id="charDetial" class="form-control profileText" placeholder="" rows="7" style="resize:none;"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-dismiss="modal" id="sendChat" onclick="chat()">发送</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="myMessage mySystemMessage">
+                <ul>
+                    {% for m in myMsg %}
+                        {% if m.user.username == "admin" %}
+                        <li class="sysmessageItem">
+
+                            <a>
+                                <p class="messageContent"><span class=" glyphicon glyphicon-chevron-right" />&nbsp{{ m.content }}</p>
+                            </a>
+                            <a>
+                                <p class="messageFrom"><span class="glyphicon glyphicon-user" />&nbsp;{{ m.user.username }}&nbsp;&nbsp;<span class="glyphicon glyphicon-time" /><span class="messageTime">&nbsp;{{ m.ctime }}</span></p>
+                            </a>
+
+                        </li>
+                        {% elif m.user.username != "admin" %}
+                        <li class="messageItem">
+
+                            <a>
+                                <p class="messageContent"><span class=" glyphicon glyphicon-chevron-right" />&nbsp{{ m.content }}</p>
+                            </a>
+                            <a>
+                                <p class="messageFrom"><span class="glyphicon glyphicon-user" />&nbsp;{{ m.user.username }}&nbsp;&nbsp;<span class="glyphicon glyphicon-time" /><span class="messageTime">&nbsp;{{ m.ctime }}</span></p>
+                            </a>
+
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+    <div role="tabpanel" class="tab-pane" id="post">
+        <div class="myIndexBox">
+            <div class="myPost">
+                <ul>
+                    {% for n in news %}
+                    <li class="postItem">
+                        <a href="/blog/article_detial/?id={{ n.id | safe }}" style="text-decoration:none">
+                            <h4 class="messageContent"><span class="glyphicon glyphicon-paperclip" />&nbsp;{{ n.title}}</h4>
+                            <p class="messageContent">{{ n.summary }}<span class="messageTime"><span class="glyphicon glyphicon-time"/>&nbsp;{{ n.ctime}}</span></p>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="favorite">
+        <div class="myIndexBox">
+            <div class="myPost">
+                <ul>
+                    {% for c in mycollect %}
+                    <li class="postItem">
+                        <a href="/blog/article_detial/?id={{ c.id | safe }}">
+                            <h4 class="messageContent"><span class="glyphicon glyphicon-bookmark" />&nbsp;{{ c.title }}</h4>
+                            <p class="messageContent">{{ c.summary }}</p>
+                            <a href="/blog/otherIndex/?id={{c.user.id|safe}}">
+                                <p class="messageFrom"><span class="glyphicon glyphicon-user" />&nbsp;{{ c.user.username}}&nbsp;&nbsp;<span class="glyphicon glyphicon-time" />
+                                    <span class="messageTime">&nbsp;{{ c.ctime }}</span></p>
+                            </a>
+                        </a>
+                    </li>
+                    {% endfor %}
+                    <!--
+				<li class="moreMessage">
+					<button type="button" class="btn btn-default"><a>More&nbsp;<span class=" glyphicon glyphicon-chevron-right"/></a></button>
+				</li>
+				-->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="focus">
+        <div class="myIndexBox">
+            <div class="myPost">
+                {% for f in myfollowers %}
+                <div class="panel panel-default focusItem">
+                    <div class="photoPanel">
+                        <a href="/blog/otherIndex/?id={{f.id|safe}}">
+                            <div class="photoBody">
+                                <img src="\{{ f.user_img }}" style="width:100%;height:auto;border-radius:100%;">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="splitLine"></div>
+                    <div class="InformationPanel">
+                        <p class="focusNickname"><a href="/blog/otherIndex/?id={{f.id|safe}}"><b>{{ f.username }}</b></a></p>
+                        <p class="focusSex"><span>{{ f.sex }}</span>&nbsp;&nbsp;&nbsp;<span>20岁</span></p>
+                        <p class="focusOccupation">{{ f.occupation }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="myfans">
+        <div class="myIndexBox">
+            <div class="myPost">
+                {% for fan in myfans %}
+                <div class="panel panel-default focusItem">
+                    <div class="photoPanel">
+                        <a href="/blog/otherIndex/?id={{fan.id|safe}}">
+                            <div class="photoBody">
+                                <img src="\{{ fan.user_img }}" style="width:100%;height:auto;border-radius:100%;">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="splitLine"></div>
+                    <div class="InformationPanel">
+                        <p class="focusNickname"><a href="/blog/otherIndex/?id={{fan.id|safe}}"><b>{{ fan.username }}</b></a></p>
+                        <p class="focusSex"><span>{{ fan.sex }}</span>&nbsp;&nbsp;&nbsp;<span>20岁</span></p>
+                        <p class="focusOccupation">{{ fan.occupation }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+<div role="tabpanel" class="tab-pane" id="myteam">
+	<div class="myIndexBox">
+		<div class="myPost">
+			<div class="panel-group" id="accordion">
+			{% for t in teams %}
+			{% if request.user in t.teammate.all %}
+			<div class="panel panel-warning">
+			<div class="panel-heading">
+				<h5>
+					<a class="team_a" data-toggle="collapse" data-parent="#accordion" href="#{{t.id}}">
+						<p class="team_head"><span class="glyphicon glyphicon-tower"/>&nbsp;Team:&nbsp;{{t.name}}&nbsp;<span class="glyphicon glyphicon-king "/>&nbsp;Captain:&nbsp;{{t.captain.username}}</p>
+					</a>
+				</h5>
+			</div>
+			<div id="{{t.id}}" class="panel-collapse collapse">
+				<div class="panel-body">
+				<p class="team_info"><span class="glyphicon glyphicon-blackboard"/>&nbsp;{{t.detail}}</p>
+				<p class="team_info"><span class="glyphicon glyphicon-pawn"/>&nbsp;人数：{{t.nownum}}/{{t.maxnum}}</p>
+				<p class="team_info"><span class="glyphicon glyphicon-tent"/>
+				成员：{% for tm in t.teammate.all %}{{tm.username}}&nbsp;{% endfor %}
+				</p>
+                <a href="/blog/teamzone/?id={{ t.id | safe }}"><button class="btn btn-warning">进入团队基地</button></a>
+				</div>
+			</div>
+			</div>
+			{% endif %}
+			{% endfor %}    
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+{% endblock %}

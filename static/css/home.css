@@ -1,0 +1,192 @@
+
+body {
+    font-family: 'Microsoft YaHei';
+    font-size: 12px;
+}
+body {
+	background: white;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+	text-align:center;
+	margin:0 auto;
+	width:100%;
+	height:auto;
+}
+html {
+    font-size: 62.5%;
+}
+html {
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+}
+
+.toolbar {
+    width: 100%;
+    padding: 0;
+	margin: 0;
+    border-bottom: 0px solid #e9e9e9;
+    font-family: "Helvetica", "Tahoma, Arial", "sans-serif";
+    font-size: 0.75em;
+    color: #333;
+    line-height: 1.5em;
+}
+.toolbar-skin-coffee {
+    height: 50px;
+	width:100%;
+    background:#8c5f00;
+    border-bottom: none;
+}
+.toolbar .container {
+    width: 1156px;
+    margin: 0 auto;
+}
+.container {
+    padding:none;
+    margin:none;
+}
+.toolbar .logo {
+    padding: 0;
+    font-size: 12px;
+    height: 40px;
+    width: auto;
+}
+.toolbar .pull-left {
+    float: left;
+}
+.toolbar .clearfix {
+    overflow: visible;
+}
+.pull-left {
+    float: left;
+}
+.pull-left {
+    float: left !important;
+}
+
+.toolbar .pull-right {
+    float: right;
+}
+.pull-right {
+    float: right;
+}
+.pull-right {
+    float: right !important;
+}
+.toolbar ul {
+    margin: 0;
+    padding: 0;
+	list-style-type:none;
+}
+.toolbar .logo .icon {
+    background-position: 0 0;
+    display: block;
+    float: left;
+    height: 50px;
+	width:50px;
+    line-height: 18px;
+    margin: 2px 0px 0px -5px;
+    padding: 0;
+}
+.toolbar a:link, .toolbar a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+.toolbar .icon {
+    background-image: url(../images/2.png);
+    font-size: 20px;
+    background-position: 1px 1px;
+    position: relative;
+    background-repeat: no-repeat;
+	left:5%;
+}
+.toolbar .logo .img {
+    background-image: url("../images/co-fee.png");
+	margin: 7px 0px 2px -1px;
+    width: 120px;
+    height: 40px;
+    float: left;
+	left:5%;
+}
+.toolbar-skin-coffee .btns a {
+	float: left;
+	font-size: 15px; 
+	margin:-4px 0 0 0;
+}
+
+.toolbar-skin-coffee .btns li {
+	float: left;
+	height:5px;
+	padding: 15px 20px;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+	margin:10px 0 0 0;
+	display: block;   
+}
+
+.guide {  
+    height: 40px;  
+    width: 100%;  
+	background-color:white;
+    border-bottom: 1px solid gray;  
+	font-size:22px;
+	position:relative;
+	margin:0 0 15px 0;
+}  
+.guide ul {  
+    list-style-type: none;  
+    padding: 0px 0px 5px 0px;  
+    float: left; 
+	margin:-5px 0 0 0px;
+    position: relative;/*子元素absol*/  
+}   
+.guide ul li {  
+    width: 160px;  
+    height: 56px;  
+    text-align: center;
+    float: left;
+}  
+.guide ul a:hover{  
+    color: #EB8E55;  
+}  
+
+
+.guide ul li a {  
+    color: #848789;  
+    text-decoration: none;  
+    line-height: 56px; 
+} 
+
+#box{
+	width:220px;
+	float:left;
+	margin:12px 0 0 15px;
+	padding:0;
+}
+#search{
+	width:190px;
+	border: 1px solid #915a00;
+	padding:0 0 0 5px;
+	font-size:15px;
+	height: 30px;
+	float:left;
+}
+.postup{
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    float:right;
+    height:5px;
+    padding: 15px 20px;
+    margin:10px 0px 0 0;
+    font-size: 15px;
+}
+.postup a {
+	float: left;
+	font-size: 15px;
+	margin:-4px 0 0 0;
+}
+.postup img {
+    width:15px;
+    height:15px;
+    margin:0 6px 5px 0px;
+}
