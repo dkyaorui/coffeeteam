@@ -1,2 +1,2 @@
 # coffeeteam
-pytho/django/blog
+python/django/blog
