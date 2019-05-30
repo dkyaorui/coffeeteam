@@ -1,4 +1,0 @@
-{
-    "python.pythonPath": "/home/admin/envs/web/bin/python",
-    "python.linting.pylintArgs": ["--load-plugins", "pylint_django"]
-}
